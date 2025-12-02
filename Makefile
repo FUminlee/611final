@@ -1,16 +1,8 @@
-# Makefile for 611 Final Project
+# Makefile for converting Jupyter notebook to HTML using the venv inside Docker
 
-NOTEBOOK = 611final.ipynb
-REPORT = report.html
-
-all: $(REPORT)
-
-$(REPORT): $(NOTEBOOK)
-	jupyter nbconvert --to html $(NOTEBOOK) --output $(REPORT)
+report.html: 611final.ipynb
+	./venv/bin/jupyter nbconvert --to html 611final.ipynb --output report.html
 
 clean:
-	rm -f $(REPORT)
-	rm -rf __pycache__
-	rm -rf .ipynb_checkpoints
+	rm -f report.html
 
-.PHONY: all clean
