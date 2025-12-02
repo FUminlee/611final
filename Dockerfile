@@ -26,3 +26,4 @@ ENV PASSWORD=rstudio
 
 # Default command when the container starts
 CMD ["/init"]
+
