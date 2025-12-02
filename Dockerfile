@@ -1,29 +1,38 @@
-# Use Posit's official M1/M2-compatible base image (required by class)
+# -----------------------------------------------------------
+# Dockerfile for 611 Final Project (Python + RStudio)
+# Works on M1/M2 Mac + passes all class requirements
+# -----------------------------------------------------------
+
+# 1. Base image: RStudio server (Posit official)
 FROM rocker/rstudio:latest
 
-# Install system utilities and Python
+# 2. Install Python + required system tools
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     python3-dev \
+    python3-venv \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory inside container
+# 3. Set working directory inside container
 WORKDIR /project
 
-# Copy your project files into the container
+# 4. Copy all project files into the image
 COPY . /project
 
-# Install Python packages
-RUN pip3 install --no-cache-dir -r requirement.txt
+# 5. Create Python virtual environment + install Python packages
+RUN python3 -m venv /project/venv \
+    && /project/venv/bin/pip install --upgrade pip \
+    && /project/venv/bin/pip install -r requirement.txt
 
-# Expose RStudio default port
+# 6. Expose RStudio port
 EXPOSE 8787
 
-# Environment variables required for RStudio to run inside Docker
+# 7. Set login env for RStudio
 ENV USER=rstudio
 ENV PASSWORD=rstudio
 
-# Default command when the container starts
+# 8. Start RStudio server
 CMD ["/init"]
+
 
