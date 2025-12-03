@@ -44,3 +44,11 @@ All figures and code exist in the `611final.ipynb` file.
 ---
 
 
+## Implementation Details
+
+To run this project, first download the dataset from:
+https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
+
+After downloading, update the data-loading path inside the 611final.ipynb notebook so it correctly points to your local dataset location.
+
+When opening the terminal inside the Docker container, the default username and password are both: rstudio
