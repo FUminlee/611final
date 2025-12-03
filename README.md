@@ -78,7 +78,7 @@ And then you can try to bulid the docker through the following guidance:
 
 5. Generate the HTML report:
 
-A pre-generated report.html is already included.  
+A pre-generated report.html will be included when you try to bulid docker.  
 If you want to regenerate it:
 
     rm report.html
